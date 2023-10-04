@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-//import 'package:app_veterinaria/src/pages/Form_register_page.dart';
-//import 'package:app_veterinaria/src/pages/Form_login_page.dart';
+import '../widgets/Icon_container.dart';
+import 'package:app_veterinaria/src/pages/Form_login_page.dart';
+import 'package:app_veterinaria/src/pages/Form_register_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,24 +18,22 @@ class HomePage extends StatelessWidget {
         image: DecorationImage(
             image: AssetImage('images/fondo.png'), fit: BoxFit.cover),
       ),
-      child: const Scaffold(
+      child: Scaffold(
+        //backgroundColor: Colors.blueGrey[100],
         backgroundColor: Colors.transparent,
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(children: <Widget>[
+        body: ListView(
+          //padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 100.0),
+          children: <Widget>[
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: 100.0,
+              children: [
+                const SizedBox(
+                  height: 150.0,
                 ),
-                CircleAvatar(
-                  radius: 100.0,
-                  backgroundColor: Colors.grey,
-                  backgroundImage: AssetImage('images/logocirculo.png'),
+                const Iconcontainer(
+                  url: 'images/logocirculo.png',
                 ),
-                Text(
+                const Text(
                   'Cachorro PET',
                   style: TextStyle(
                     fontFamily: 'Roboto',
@@ -38,7 +42,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
+                const Text(
                   '¡Genera tu cita ya!',
                   style: TextStyle(
                     fontFamily: 'Roboto',
@@ -47,17 +51,60 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 160.0,
                   height: 15.0,
                   child: Divider(color: Colors.white),
                 ),
-                SizedBox(
-                  height: 280.0,
+                const SizedBox(
+                  height: 180.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const FormLoginPage(),
+                    ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlueAccent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      minimumSize: const Size(360, 55)),
+                  child: const Text(
+                    'Iniciar sesión',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const FormRegisterPage(),
+                    ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      minimumSize: const Size(360, 55)),
+                  child: const Text(
+                    'Crear cuenta nueva',
+                    style: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 17.0,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
-          ]),
+          ],
         ),
       ),
     );

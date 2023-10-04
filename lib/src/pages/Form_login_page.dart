@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
 
-class FormLoginPage extends StatelessWidget {
+class FormLoginPage extends StatefulWidget {
   const FormLoginPage({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _FormLoginPageScreenState createState() => _FormLoginPageScreenState();
+}
+
+class _FormLoginPageScreenState extends State<FormLoginPage> {
+  bool isLoading = true;
+
+  // Simulamos una carga ficticia con un temporizador.
+  void simulateLoading() {
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        isLoading =
+            false; // Cambia isLoading a false para ocultar la pantalla de carga.
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    simulateLoading(); // Inicia la simulación de carga al iniciar la pantalla.
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,68 +33,33 @@ class FormLoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Ingresa tu usuario y contraseña'),
       ),
-      body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 90.0),
-          children: const <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Login',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 50.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                TextField(
-                  enableInteractiveSelection: false,
-                  autofocus: true,
-                  textCapitalization: TextCapitalization.characters,
-                  decoration: InputDecoration(
-                      hintText: 'User-name',
-                      labelText: 'User name',
-                      suffixIcon: Icon(Icons.verified_user),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0)))),
-                ),
-                SizedBox(
-                  height: 18.0,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Email',
-                      labelText: 'User email',
-                      suffixIcon: Icon(Icons.alternate_email),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0)))),
-                ),
-                SizedBox(
-                  height: 18.0,
-                ),
-                TextField(
-                  enableInteractiveSelection: false,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      hintText: 'Password',
-                      labelText: 'User password',
-                      suffixIcon: Icon(Icons.lock_outline),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0)))),
-                ),
-                SizedBox(
-                  height: 18.0,
-                ),
-              ],
-            )
-          ]),
+      body: Stack(
+        children: <Widget>[
+          // Pantalla principal
+          const Center(
+            child: Text(
+              'Contenido de login',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+
+          // Pantalla de carga desvanecida
+          AnimatedOpacity(
+            opacity: isLoading ? 1.0 : 0.0, // Controla la opacidad
+            duration: const Duration(seconds: 1), // Duración de la animación
+            child: Container(
+              color: Colors.white,
+              child: const Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.grey,
+                  valueColor: AlwaysStoppedAnimation(Colors.red),
+                  strokeWidth: 10,
+                ), // Indicador de carga
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
