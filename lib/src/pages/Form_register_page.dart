@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class FormRegisterPage extends StatefulWidget {
@@ -126,20 +124,12 @@ class _FormRegisterPageScreenState extends State<FormRegisterPage> {
                     ),
                   ),
                   onPressed: () {},
-                  child: Text('Registrar')
-                  ),
+                  child: Text('Registrar')),
 
-                
-
-                  Text(
+              Text(
                 'Aviso de privacidad',
                 style: TextStyle(fontFamily: 'NerkoOne', fontSize: 17.0),
               ),
-
-            
-
-
-              
 
               // Pantalla de carga desvanecida
               AnimatedOpacity(
