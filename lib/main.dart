@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:app_veterinaria/src/pages/Home_page.dart';
+import 'package:app_veterinaria/src/unauthenticated/home_signup.dart';
 
 void main() => runApp(const MyApp());
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'Home',
       routes: <String, WidgetBuilder>{
-        'Home': (BuildContext context) => const HomePage(),
+        'Home': (BuildContext context) => const HomeSignup(),
       },
     );
   }
