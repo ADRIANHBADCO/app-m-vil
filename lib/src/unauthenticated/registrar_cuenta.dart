@@ -38,6 +38,7 @@ class _RegistrarCuentaState extends State<RegistrarCuenta> {
                 height: 20.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 enableInteractiveSelection: false,
                 autofocus: true,
                 textCapitalization: TextCapitalization.characters,
@@ -80,6 +81,7 @@ class _RegistrarCuentaState extends State<RegistrarCuenta> {
                 height: 15.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 decoration: InputDecoration(
                   hintText: 'Teléfono',
                   labelText: 'Teléfono',
@@ -101,6 +103,7 @@ class _RegistrarCuentaState extends State<RegistrarCuenta> {
                 height: 15.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 enableInteractiveSelection: false,
                 autofocus: true,
                 textCapitalization: TextCapitalization.characters,

@@ -37,6 +37,7 @@ class _IniciarCuentaState extends State<IniciarCuenta> {
                 height: 20.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 enableInteractiveSelection: false,
                 autofocus: true,
                 textCapitalization: TextCapitalization.characters,
@@ -61,6 +62,7 @@ class _IniciarCuentaState extends State<IniciarCuenta> {
                 height: 15.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 decoration: InputDecoration(
                   hintText: 'Contraseña',
                   labelText: 'Contraseña',

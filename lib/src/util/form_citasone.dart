@@ -48,6 +48,7 @@ class _FormCitasOneState extends State<FormCitasOne> {
                 height: 20.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 enableInteractiveSelection: false,
                 autofocus: true,
                 textCapitalization: TextCapitalization.characters,
@@ -90,6 +91,7 @@ class _FormCitasOneState extends State<FormCitasOne> {
                 height: 15.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 decoration: InputDecoration(
                   hintText: 'Teléfono del propietario',
                   labelText: 'Teléfono propietario',
@@ -111,6 +113,7 @@ class _FormCitasOneState extends State<FormCitasOne> {
                 height: 15.0,
               ),
               TextField(
+                cursorColor: Colors.blue,
                 decoration: InputDecoration(
                   hintText: 'Edad de la mascota',
                   labelText: 'Edad mascota',
