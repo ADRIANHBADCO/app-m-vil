@@ -136,7 +136,6 @@ class _IniciarCuentaState extends State<IniciarCuenta> {
                       borderSide: const BorderSide(color: Colors.lightBlue),
                     ),
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {},
                 ),
               ),

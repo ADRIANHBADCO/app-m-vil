@@ -78,7 +78,7 @@ class ProductosPagesState extends State<ProductosPages> {
           width: 150,
           height: 300,
           child: Card(
-            elevation: 5,
+            elevation: 2,
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: Column(
@@ -142,13 +142,13 @@ class ProductosPagesState extends State<ProductosPages> {
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 50,
+                    height: 80,
                   ),
                   Image.asset(
                     'images/mas.png',
                     fit: BoxFit.cover,
-                    width: 100,
-                    height: 100,
+                    width: 50,
+                    height: 50,
                   ),
                   const SizedBox(
                     height: 10,
