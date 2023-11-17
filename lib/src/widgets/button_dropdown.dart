@@ -25,6 +25,13 @@ class Buttondropdown extends StatelessWidget {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
       borderRadius: BorderRadius.circular(20.0),
+      validator: (value) {
+        value ??= '';
+        if (value.isEmpty) {
+          return 'Este campo es obligatorio';
+        }
+        return null;
+      },
     );
   }
 }

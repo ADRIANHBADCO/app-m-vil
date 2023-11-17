@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../util/horizontal_lista.dart';
 import 'package:app_veterinaria/src/util/carrusel_vt.dart';
 import 'package:app_veterinaria/src/util/search_services.dart';
 import 'package:app_veterinaria/src/util/productos_pages.dart';
 import 'package:app_veterinaria/src/widgets/subtitulo_text.dart';
 import 'package:app_veterinaria/src/util/horizontal_servicios.dart';
+import 'package:app_veterinaria/src/util/horizontal_categorias.dart';
 import 'package:app_veterinaria/src/unauthenticated/sidebar_menu.dart';
+import 'package:app_veterinaria/src/unauthenticated/card_sesiones.dart';
 import 'package:app_veterinaria/src/unauthenticated/iniciar_cuenta.dart';
 
 class HomeSignup extends StatefulWidget {
@@ -14,8 +15,8 @@ class HomeSignup extends StatefulWidget {
   @override
   State<HomeSignup> createState() => _HomeSignupState();
 }
-class _HomeSignupState extends State<HomeSignup> {
 
+class _HomeSignupState extends State<HomeSignup> {
   @override
   void initState() {
     super.initState();
@@ -88,27 +89,24 @@ class _HomeSignupState extends State<HomeSignup> {
             children: [
               CarruselVt(),
               Padding(
-                padding: EdgeInsets.only(right: 300.0),
-                child: SubtituloText(text: 'Categorias')
-              ),
-              HorizontalLista(),
+                  padding: EdgeInsets.only(right: 300.0),
+                  child: SubtituloText(text: 'Categorias')),
+              HorizontalCategorias(),
               SizedBox(
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 300.0),
-                child: SubtituloText(text: 'Servicios')
-              ),
+                  padding: EdgeInsets.only(right: 300.0),
+                  child: SubtituloText(text: 'Servicios')),
               HorizontalServicios(),
               SizedBox(
                 height: 20.0,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 300.0),
-                child: SubtituloText(text: 'Productos')
-              ),
+                  padding: EdgeInsets.only(right: 300.0),
+                  child: SubtituloText(text: 'Productos')),
               ProductosPages(),
-              SizedBox(height: 20.0)
+              CardSesiones(),
             ],
           ),
         ],

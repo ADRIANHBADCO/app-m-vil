@@ -16,7 +16,10 @@ class CategoriasProductos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Categorías'),
+        title: const Text(
+          'Categorías',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.redAccent,
       ),
       body: GridView.builder(

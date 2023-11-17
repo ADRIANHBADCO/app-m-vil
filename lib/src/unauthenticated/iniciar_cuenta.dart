@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import '../widgets/button_elevated.dart';
 import 'package:app_veterinaria/src/authenticated/home_signin.dart';
 import 'package:app_veterinaria/src/unauthenticated/registrar_cuenta.dart';
@@ -11,6 +13,82 @@ class IniciarCuenta extends StatefulWidget {
 }
 
 class _IniciarCuentaState extends State<IniciarCuenta> {
+  Future<void> _handleSubmit() async {
+    try {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      final data = {
+        'email': email,
+        'password': password,
+      };
+
+      var response = await http.post(
+        Uri.parse('https://proyectowebuni.com/api/loginusuario'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(data),
+      );
+
+      if (response.statusCode == 200) {
+        final responseData = json.decode(response.body);
+        print('Inicio de sesión exitoso: ${responseData}');
+
+        // Redirecciona al usuario a la página de inicio de sesión
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const HomeSignin(),
+        ));
+      } else if (response.statusCode >= 500 && response.statusCode < 600) {
+        print('Error en el servidor');
+        // Muestra una notificación de error en el servidor
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Error en el servidor'),
+              content: Text('Inténtalo de nuevo más tarde.'),
+              actions: [
+                TextButton(
+                  child: Text('Aceptar'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        print('Inicio de sesión fallido');
+        // Muestra una notificación de error general
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Inicio de sesión fallido'),
+              content: Text('Verifica tus credenciales.'),
+              actions: [
+                TextButton(
+                  child: Text('Aceptar'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      // Manejo de la excepción cuando no hay conexión a Internet.
+      print('Error de conexión: $e');
+      // Puedes mostrar un mensaje de error al usuario o tomar otras medidas apropiadas.
+    }
+  }
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,32 +114,37 @@ class _IniciarCuentaState extends State<IniciarCuenta> {
               const SizedBox(
                 height: 20.0,
               ),
-              TextField(
-                cursorColor: Colors.blue,
-                enableInteractiveSelection: false,
-                autofocus: true,
-                textCapitalization: TextCapitalization.characters,
-                decoration: InputDecoration(
-                  hintText: 'E-mail',
-                  labelText: 'E-mail',
-                  labelStyle: const TextStyle(
-                    color: Colors.blue,
+              Form(
+                key: _formKey,
+                child: TextFormField(
+                  controller: _emailController,
+                  cursorColor: Colors.blue,
+                  enableInteractiveSelection: false,
+                  autofocus: true,
+                  textCapitalization: TextCapitalization.characters,
+                  decoration: InputDecoration(
+                    hintText: 'E-mail',
+                    labelText: 'E-mail',
+                    labelStyle: const TextStyle(
+                      color: Colors.blue,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: const BorderSide(color: Colors.lightBlue),
+                    ),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: const BorderSide(color: Colors.lightBlue),
-                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  onChanged: (value) {},
                 ),
-                keyboardType: TextInputType.emailAddress,
-                onSubmitted: (valor) {},
               ),
               const SizedBox(
                 height: 15.0,
               ),
-              TextField(
+              TextFormField(
+                controller: _passwordController,
                 cursorColor: Colors.blue,
                 decoration: InputDecoration(
                   hintText: 'Contraseña',
@@ -77,17 +160,13 @@ class _IniciarCuentaState extends State<IniciarCuenta> {
                     borderSide: const BorderSide(color: Colors.lightBlue),
                   ),
                 ),
-                onSubmitted: (valor) {},
+                onChanged: (value) {},
               ),
               const SizedBox(
                 height: 20.0,
               ),
               Buttonelevated(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const HomeSignin(),
-                  ));
-                },
+                onPressed: _handleSubmit,
                 text: 'Iniciar sesión',
               ),
               const SizedBox(

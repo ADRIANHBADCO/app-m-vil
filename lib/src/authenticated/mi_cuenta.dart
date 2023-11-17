@@ -9,7 +9,10 @@ class MiCuenta extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mi cuenta'),
+        title: const Text(
+          'Mi cuenta',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.redAccent,
       ),
       body: const SingleChildScrollView(

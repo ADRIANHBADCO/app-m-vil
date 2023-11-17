@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 class Inputfield extends StatelessWidget {
   final String hintText;
   final String labelText;
-  final ValueChanged<String> onSubmitted;
+  final TextEditingController controller;
+  final ValueChanged<String> onChanged;
 
   const Inputfield({
     Key? key,
     required this.hintText,
     required this.labelText,
-    required this.onSubmitted,
+    required this.controller,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      controller: controller,
       cursorColor: Colors.blue,
       decoration: InputDecoration(
         hintText: hintText,
@@ -30,7 +33,14 @@ class Inputfield extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.blue),
         ),
       ),
-      onSubmitted: onSubmitted,
+      validator: (value) {
+        value ??= '';
+        if (value.isEmpty) {
+          return 'Este campo es obligatorio';
+        }
+        return null;
+      },
+      onChanged: onChanged,
     );
   }
 }

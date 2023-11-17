@@ -10,7 +10,9 @@ class RegistrarCuenta extends StatefulWidget {
 }
 
 class _RegistrarCuentaState extends State<RegistrarCuenta> {
-  String _nombre = 'Juan';
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _paternoController = TextEditingController();
+  final TextEditingController _maternoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,100 +39,108 @@ class _RegistrarCuentaState extends State<RegistrarCuenta> {
               const SizedBox(
                 height: 20.0,
               ),
-              TextField(
-                cursorColor: Colors.blue,
-                enableInteractiveSelection: false,
-                autofocus: true,
-                textCapitalization: TextCapitalization.characters,
-                decoration: InputDecoration(
-                  hintText: 'Nombre',
-                  labelText: 'Nombre',
-                  labelStyle: const TextStyle(
-                    color: Colors.blue,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: const BorderSide(color: Colors.lightBlue),
-                  ),
-                ),
-                onSubmitted: (valor) {
-                  _nombre = valor;
-                  print('El nombre es $_nombre');
-                },
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              Inputfield(
-                hintText: 'Apellido paterno',
-                labelText: 'Apellido paterno',
-                onSubmitted: (valor) {},
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              Inputfield(
-                hintText: 'Apellido materno',
-                labelText: 'Apellido materno',
-                onSubmitted: (valor) {},
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              TextField(
-                cursorColor: Colors.blue,
-                decoration: InputDecoration(
-                  hintText: 'Teléfono',
-                  labelText: 'Teléfono',
-                  labelStyle: const TextStyle(
-                    color: Colors.blue,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: const BorderSide(color: Colors.lightBlue),
-                  ),
-                ),
-                keyboardType: TextInputType.phone,
-                onSubmitted: (valor) {},
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              TextField(
-                cursorColor: Colors.blue,
-                enableInteractiveSelection: false,
-                autofocus: true,
-                textCapitalization: TextCapitalization.characters,
-                decoration: InputDecoration(
-                  hintText: 'E-mail',
-                  labelText: 'E-mail',
-                  labelStyle: const TextStyle(
-                    color: Colors.blue,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: const BorderSide(color: Colors.lightBlue),
-                  ),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                onSubmitted: (valor) {},
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              Buttonelevated(
-                onPressed: () {},
-                text: 'Registrar',
-              ),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        cursorColor: Colors.blue,
+                        enableInteractiveSelection: false,
+                        autofocus: true,
+                        textCapitalization: TextCapitalization.characters,
+                        decoration: InputDecoration(
+                          hintText: 'Nombre',
+                          labelText: 'Nombre',
+                          labelStyle: const TextStyle(
+                            color: Colors.blue,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide:
+                                const BorderSide(color: Colors.lightBlue),
+                          ),
+                        ),
+                        onChanged: (valor) {},
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Inputfield(
+                        controller: _paternoController,
+                        hintText: 'Apellido paterno',
+                        labelText: 'Apellido paterno',
+                        onChanged: (valor) {},
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Inputfield(
+                        controller: _maternoController,
+                        hintText: 'Apellido materno',
+                        labelText: 'Apellido materno',
+                        onChanged: (valor) {},
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      TextField(
+                        cursorColor: Colors.blue,
+                        decoration: InputDecoration(
+                          hintText: 'Teléfono',
+                          labelText: 'Teléfono',
+                          labelStyle: const TextStyle(
+                            color: Colors.blue,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide:
+                                const BorderSide(color: Colors.lightBlue),
+                          ),
+                        ),
+                        keyboardType: TextInputType.phone,
+                        onSubmitted: (valor) {},
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      TextField(
+                        cursorColor: Colors.blue,
+                        enableInteractiveSelection: false,
+                        autofocus: true,
+                        textCapitalization: TextCapitalization.characters,
+                        decoration: InputDecoration(
+                          hintText: 'E-mail',
+                          labelText: 'E-mail',
+                          labelStyle: const TextStyle(
+                            color: Colors.blue,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide:
+                                const BorderSide(color: Colors.lightBlue),
+                          ),
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        onSubmitted: (valor) {},
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Buttonelevated(
+                        onPressed: () {},
+                        text: 'Registrar',
+                      ),
+                    ],
+                  )),
             ],
           ),
         ],

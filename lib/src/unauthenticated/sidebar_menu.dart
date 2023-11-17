@@ -2,6 +2,7 @@ import '../util/acerca_de.dart';
 import 'package:flutter/material.dart';
 import '../widgets/custom_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:app_veterinaria/src/util/registrar_citas.dart';
 import 'package:app_veterinaria/src/util/search_services.dart';
 import 'package:app_veterinaria/src/util/servicios_pages.dart';
 import 'package:app_veterinaria/src/unauthenticated/mi_cuenta.dart';
@@ -56,6 +57,15 @@ class SidebarMenu extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.date_range_outlined),
             title: const Text('Agendar cita'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const RegistrarCitas(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.health_and_safety_outlined),
+            title: const Text('Servicios'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const ServiciosPage(),

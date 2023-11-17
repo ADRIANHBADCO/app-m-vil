@@ -55,6 +55,8 @@ class _ProductosDetallesState extends State<ProductosDetalles> {
       appBar: AppBar(
         title: Text(
           widget.product['nombre'],
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.redAccent,
       ),

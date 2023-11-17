@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:app_veterinaria/src/util/form_citasone.dart';
+import 'package:app_veterinaria/src/util/registrar_citas.dart';
 
 class MyData {
   final String tipo;
@@ -117,7 +117,7 @@ class _ServiciosPageState extends State<ServiciosPage> {
                             ElevatedButton(
                               onPressed: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const FormCitasOne(),
+                                  builder: (context) => const RegistrarCitas(),
                                 ));
                               },
                               style: ElevatedButton.styleFrom(

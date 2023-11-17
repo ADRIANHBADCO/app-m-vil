@@ -7,7 +7,10 @@ class ProfilUsuario extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mi Perfil'),
+        title: const Text(
+          'Mi perfil',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.redAccent,
       ),
       body: const SingleChildScrollView(

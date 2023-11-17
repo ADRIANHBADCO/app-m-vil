@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import '../util/horizontal_lista.dart';
 import 'package:app_veterinaria/src/util/carrusel_vt.dart';
 import 'package:app_veterinaria/src/util/search_services.dart';
 import 'package:app_veterinaria/src/util/productos_pages.dart';
 import 'package:app_veterinaria/src/widgets/subtitulo_text.dart';
 import 'package:app_veterinaria/src/util/horizontal_servicios.dart';
+import 'package:app_veterinaria/src/util/horizontal_categorias.dart';
 import 'package:app_veterinaria/src/authenticated/sidebar_menu.dart';
 import 'package:app_veterinaria/src/authenticated/carrito_compras.dart';
+
 class HomeSignin extends StatefulWidget {
   const HomeSignin({super.key});
 
   @override
   State<HomeSignin> createState() => _HomeSigninState();
 }
-class _HomeSigninState extends State<HomeSignin> {
 
+class _HomeSigninState extends State<HomeSignin> {
   @override
   void initState() {
     super.initState();
@@ -111,10 +112,9 @@ class _HomeSigninState extends State<HomeSignin> {
             children: [
               CarruselVt(),
               Padding(
-                padding: EdgeInsets.only(right: 300.0),
-                child: SubtituloText(text: 'Categorias')
-              ),
-              HorizontalLista(),
+                  padding: EdgeInsets.only(right: 300.0),
+                  child: SubtituloText(text: 'Categorias')),
+              HorizontalCategorias(),
               SizedBox(
                 height: 20,
               ),
@@ -127,9 +127,8 @@ class _HomeSigninState extends State<HomeSignin> {
                 height: 20.0,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 300.0),
-                child: SubtituloText(text: 'Productos')
-              ),
+                  padding: EdgeInsets.only(right: 300.0),
+                  child: SubtituloText(text: 'Productos')),
               ProductosPages(),
               SizedBox(height: 20.0)
             ],

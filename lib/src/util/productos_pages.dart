@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -47,9 +48,15 @@ class ProductosPagesState extends State<ProductosPages> {
       height: 250,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: products.length,
+        itemCount: min(products.length, 11), // Limitar a 11 elementos
         itemBuilder: (context, index) {
-          return _builListItem(context, index);
+          if (index == 10) {
+            // Índice 10, mostrar el botón "Ver más"
+            return _buildVerMasButton(context);
+          } else {
+            // Otros índices, mostrar los elementos normales
+            return _builListItem(context, index);
+          }
         },
       ),
     );
@@ -63,12 +70,15 @@ class ProductosPagesState extends State<ProductosPages> {
         _showProductDetail(context, product);
       },
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: EdgeInsets.only(
+          left: index == 0 ? 16.0 : 0,
+          right: index == products.length - 1 ? 16.0 : 0,
+        ),
         child: SizedBox(
           width: 150,
           height: 300,
           child: Card(
-            elevation: 1,
+            elevation: 5,
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: Column(
@@ -84,7 +94,10 @@ class ProductosPagesState extends State<ProductosPages> {
                   ),
                   Text(
                     product['nombre'],
-                    style: const TextStyle(fontSize: 15),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Text(
                     '\$${product['precio']}',
@@ -106,6 +119,52 @@ class ProductosPagesState extends State<ProductosPages> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ProductosDetalles(product: product),
+      ),
+    );
+  }
+
+  Widget _buildVerMasButton(BuildContext context) {
+    // Lógica para construir y devolver el botón "Ver más"
+    // ...
+
+    // Ejemplo: devolver un ElevatedButton
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.only(right: 16.0),
+        child: SizedBox(
+          width: 150,
+          height: 300,
+          child: Card(
+            elevation: 5,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Image.asset(
+                    'images/mas.png',
+                    fit: BoxFit.cover,
+                    width: 100,
+                    height: 100,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'Ver más',
+                    style: TextStyle(
+                      fontSize: 15,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
