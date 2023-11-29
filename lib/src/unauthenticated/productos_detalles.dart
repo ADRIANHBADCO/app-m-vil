@@ -1,5 +1,25 @@
 import 'package:flutter/material.dart';
 
+class Product {
+  String nombre;
+  String imagen;
+  String descripcion;
+  int precio;
+  int categoria;
+  int marca;
+  int cantidad;
+
+  Product({
+    required this.nombre,
+    required this.imagen,
+    required this.descripcion,
+    required this.precio,
+    required this.categoria,
+    required this.marca,
+    required this.cantidad,
+  });
+}
+
 class ProductosDetalles extends StatefulWidget {
   final Map<String, dynamic> product;
 
@@ -13,15 +33,25 @@ class ProductosDetalles extends StatefulWidget {
 }
 
 class _ProductosDetallesState extends State<ProductosDetalles> {
+  List<Product> cart = [];
+
+  void addToCart() {
+    setState(() {
+      cart.add(Product(
+        nombre: widget.product['nombre'],
+        imagen: widget.product['imagen'],
+        descripcion: widget.product['descripcion'],
+        precio: widget.product['precio'],
+        categoria: widget.product['categoria'],
+        marca: widget.product['marca'],
+        cantidad: widget.product['cantidad'],
+      ));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        title: Text(
-          widget.product['nombre'],
-        ),
-      ),
       body: ListView(
         children: [
           Center(
@@ -100,7 +130,9 @@ class _ProductosDetallesState extends State<ProductosDetalles> {
                     children: <Widget>[],
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      addToCart();
+                    },
                     child: const Text('Agregar al carrito'),
                   ),
                 ],

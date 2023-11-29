@@ -7,8 +7,12 @@ class AcercaDe extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
-        backgroundColor: Colors.redAccent,
+        title: Text(
+          '',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFFFB0404),
       ),
       body: ListView(
         children: <Widget>[
@@ -25,7 +29,9 @@ class AcercaDe extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 16.0),
+                Divider(
+                  height: 16.0,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 290.0),
                   child: Text(
@@ -53,7 +59,9 @@ class AcercaDe extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 14.0),
+                Divider(
+                  height: 14.0,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 290.0),
                   child: Text(
@@ -81,9 +89,11 @@ class AcercaDe extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 14.0),
+                Divider(
+                  height: 14.0,
+                ),
                 const Padding(
-                  padding: EdgeInsets.only(right: 270.0),
+                  padding: EdgeInsets.only(right: 275.0),
                   child: Text(
                     'VALORES',
                     style: TextStyle(

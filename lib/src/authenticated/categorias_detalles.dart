@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/util/registrar_citas.dart';
+import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
 import 'package:app_veterinaria/src/util/horizontal_categorias.dart';
 
 class CategoriasDetalles extends StatelessWidget {
@@ -16,7 +16,7 @@ class CategoriasDetalles extends StatelessWidget {
           style:
               const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color(0xFFFB0404),
       ),
       body: ListView(
         children: [
@@ -51,7 +51,7 @@ class CategoriasDetalles extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const RegistrarCitas(),
+                          builder: (context) => RegistrarCitas(),
                         ));
                       },
                       style: ElevatedButton.styleFrom(

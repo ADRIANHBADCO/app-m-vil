@@ -7,7 +7,7 @@ import 'package:app_veterinaria/src/util/horizontal_servicios.dart';
 import 'package:app_veterinaria/src/util/horizontal_categorias.dart';
 import 'package:app_veterinaria/src/unauthenticated/sidebar_menu.dart';
 import 'package:app_veterinaria/src/unauthenticated/card_sesiones.dart';
-import 'package:app_veterinaria/src/unauthenticated/iniciar_cuenta.dart';
+import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 
 class HomeSignup extends StatefulWidget {
   const HomeSignup({super.key});
@@ -28,7 +28,7 @@ class _HomeSignupState extends State<HomeSignup> {
       drawer: const SidebarMenu(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color(0xFFFB0404),
         elevation: 0,
         title: InkWell(
           onTap: () {
@@ -77,7 +77,7 @@ class _HomeSignupState extends State<HomeSignup> {
             icon: const Icon(Icons.shopping_cart_outlined, color: Colors.white),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const IniciarCuenta(),
+                builder: (context) => IniciarCuenta(),
               ));
             },
           )

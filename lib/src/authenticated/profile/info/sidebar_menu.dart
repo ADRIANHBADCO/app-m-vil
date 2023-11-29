@@ -1,11 +1,15 @@
-import '../util/acerca_de.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:app_veterinaria/src/util/registrar_citas.dart';
+import 'package:app_veterinaria/src/util/acerca_de.dart';
 import 'package:app_veterinaria/src/util/servicios_pages.dart';
 import 'package:app_veterinaria/src/util/search_services.dart';
 import 'package:app_veterinaria/src/authenticated/mi_cuenta.dart';
 import 'package:app_veterinaria/src/util/categorias_productos.dart';
+import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
+import 'package:app_veterinaria/src/authenticated/profile/info/perfil_usuario_controller.dart';
+import 'package:app_veterinaria/src/authenticated/profile/info/products/create/pet_products.dart';
+import 'package:app_veterinaria/src/authenticated/profile/info/categories/create/pet_categories.dart';
 
 class SidebarMenu extends StatelessWidget {
   _launchURL() async {
@@ -14,7 +18,8 @@ class SidebarMenu extends StatelessWidget {
     await launch(url, forceSafariVC: false, forceWebView: false);
   }
 
-  const SidebarMenu({super.key});
+  PerfilUsuarioController controller = Get.put(PerfilUsuarioController());
+  PerfilUsuarioController con = Get.find<PerfilUsuarioController>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +29,8 @@ class SidebarMenu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text(
-              'Adrian.com',
+            accountName: Text(
+              '${con.user.nombreUsuario ?? ''}',
               style: TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 18.0,
@@ -33,8 +38,8 @@ class SidebarMenu extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            accountEmail: const Text(
-              'btaadrian@gmail.com',
+            accountEmail: Text(
+              '${con.user.email ?? ''}',
               style: TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 18.0,
@@ -43,17 +48,13 @@ class SidebarMenu extends StatelessWidget {
               ),
             ),
             currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child: Image.asset(
-                  'images/logocirculo.png',
-                  width: 90,
-                  height: 90,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              radius: 60,
+              backgroundImage: con.user.imagen != null
+                  ? NetworkImage(con.user.imagen!)
+                  : AssetImage('images/user_profile.png') as ImageProvider,
             ),
             decoration: const BoxDecoration(
-              color: Colors.redAccent,
+              color: Color(0xFFFB0404),
             ),
           ),
           ListTile(
@@ -81,7 +82,25 @@ class SidebarMenu extends StatelessWidget {
             title: const Text('Mi cuenta'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const MiCuenta(),
+                builder: (context) => MiCuenta(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.category),
+            title: const Text('Register categoria'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PetCategories(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.category),
+            title: const Text('Register producto'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PetProducts(),
               ));
             },
           ),
@@ -90,7 +109,7 @@ class SidebarMenu extends StatelessWidget {
             title: const Text('Agendar cita'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const RegistrarCitas(),
+                builder: (context) => RegistrarCitas(),
               ));
             },
           ),

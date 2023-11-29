@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/unauthenticated/iniciar_cuenta.dart';
+import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -8,7 +8,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.redAccent,
+        color: Color(0xFFFB0404),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -18,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.red.withOpacity(
+                  backgroundColor: const Color(0xFFFB0404).withOpacity(
                       0.3), // Aquí ajusta el nivel de transparencia
                   child: ClipOval(
                     child: Image.asset(
@@ -66,7 +66,7 @@ class CustomDrawer extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const IniciarCuenta(),
+                  builder: (context) => IniciarCuenta(),
                 ));
               },
               style: ElevatedButton.styleFrom(

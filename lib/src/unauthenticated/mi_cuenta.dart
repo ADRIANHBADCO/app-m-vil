@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/unauthenticated/iniciar_cuenta.dart';
+import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 
 class MiCuenta extends StatelessWidget {
   const MiCuenta({super.key});
@@ -8,11 +8,12 @@ class MiCuenta extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Mi cuenta',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.redAccent,
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFFFB0404),
       ),
       body: const SingleChildScrollView(
         child: Column(
@@ -32,7 +33,7 @@ class UserActions extends StatelessWidget {
   // Función para navegar a la pantalla "IniciarCuenta"
   void _navigateToIniciarCuenta(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const IniciarCuenta(),
+      builder: (context) => IniciarCuenta(),
     ));
   }
 

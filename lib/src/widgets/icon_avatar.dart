@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Iconcontainer extends StatelessWidget {
+class IconAvatar extends StatelessWidget {
   final String url;
 
-  const Iconcontainer({super.key, required this.url});
+  const IconAvatar({super.key, required this.url});
 
   @override
   Widget build(BuildContext context) {

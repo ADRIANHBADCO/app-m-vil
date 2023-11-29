@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:app_veterinaria/src/util/registrar_citas.dart';
+import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
 
 class MyData {
   final String tipo;
@@ -53,8 +53,12 @@ class _ServiciosPageState extends State<ServiciosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
-        backgroundColor: Colors.redAccent,
+        title: Text(
+          '',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFFFB0404),
       ),
       backgroundColor: Colors.white,
       body: dataList.isEmpty
@@ -117,7 +121,7 @@ class _ServiciosPageState extends State<ServiciosPage> {
                             ElevatedButton(
                               onPressed: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const RegistrarCitas(),
+                                  builder: (context) => RegistrarCitas(),
                                 ));
                               },
                               style: ElevatedButton.styleFrom(

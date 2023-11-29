@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:app_veterinaria/src/util/servicios_detalles.dart';
+import 'package:app_veterinaria/src/unauthenticated/servicios_detalles.dart';
 
 class HorizontalServicios extends StatefulWidget {
   const HorizontalServicios({super.key});
@@ -74,10 +74,13 @@ class ServiceWidget extends StatelessWidget {
         child: SizedBox(
           width: 100.0,
           child: ListTile(
-            title: Image.network(
-              service.imagen,
-              width: 100,
-              height: 80,
+            title: SizedBox(
+              height: 80.0,
+              width: 80.0,
+              child: CircleAvatar(
+                radius: 100.0,
+                backgroundImage: NetworkImage(service.imagen),
+              ),
             ),
             subtitle: Container(
               alignment: Alignment.topCenter,

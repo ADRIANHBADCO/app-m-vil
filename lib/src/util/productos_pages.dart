@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:app_veterinaria/src/util/productos_detalles.dart';
+import 'package:app_veterinaria/src/unauthenticated/productos_detalles.dart';
 
 class ProductosPages extends StatefulWidget {
   const ProductosPages({super.key});
@@ -78,32 +78,35 @@ class ProductosPagesState extends State<ProductosPages> {
           width: 150,
           height: 300,
           child: Card(
-            elevation: 2,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              child: Column(
-                children: [
-                  Image.network(
-                    product['imagen'],
-                    fit: BoxFit.cover,
-                    width: 150,
-                    height: 180,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    product['nombre'],
-                    style: const TextStyle(
-                      fontSize: 15,
-                      overflow: TextOverflow.ellipsis,
+            elevation: 5,
+            child: Container(
+              color: Colors.white,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                child: Column(
+                  children: [
+                    Image.network(
+                      product['imagen'],
+                      fit: BoxFit.cover,
+                      width: 150,
+                      height: 180,
                     ),
-                  ),
-                  Text(
-                    '\$${product['precio']}',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      product['nombre'],
+                      style: const TextStyle(
+                        fontSize: 15,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Text(
+                      '\$${product['precio']}',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -137,30 +140,33 @@ class ProductosPagesState extends State<ProductosPages> {
           height: 300,
           child: Card(
             elevation: 5,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  Image.asset(
-                    'images/mas.png',
-                    fit: BoxFit.cover,
-                    width: 50,
-                    height: 50,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    'Ver más',
-                    style: TextStyle(
-                      fontSize: 15,
-                      overflow: TextOverflow.ellipsis,
+            child: Container(
+              color: Colors.white,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 80,
                     ),
-                  ),
-                ],
+                    Image.asset(
+                      'images/mas.png',
+                      fit: BoxFit.cover,
+                      width: 50,
+                      height: 50,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      'Ver más',
+                      style: TextStyle(
+                        fontSize: 15,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

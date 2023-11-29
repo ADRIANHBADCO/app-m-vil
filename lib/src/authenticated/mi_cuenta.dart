@@ -1,9 +1,11 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:app_veterinaria/src/unauthenticated/home_signup.dart';
-import 'package:app_veterinaria/src/authenticated/perfil_usuario.dart';
+import 'package:app_veterinaria/src/authenticated/home/home_controller.dart';
+import 'package:app_veterinaria/src/authenticated/profile/info/perfil_usuario.dart';
 
 class MiCuenta extends StatelessWidget {
-  const MiCuenta({super.key});
+  HomeController con = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class MiCuenta extends StatelessWidget {
           'Mi cuenta',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color(0xFFFB0404),
       ),
       body: const SingleChildScrollView(
         child: Column(
@@ -48,12 +50,11 @@ class UserActions extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const HomeSignup(),
-            ));
+            HomeController con = Get.find<HomeController>();
+            con.signOut();
           },
           child: const ListTile(
-            leading: Icon(Icons.account_circle),
+            leading: Icon(Icons.power_settings_new),
             title: Text('Salir'),
           ),
         ),

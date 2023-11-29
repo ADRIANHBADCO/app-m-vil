@@ -1,12 +1,15 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class Buttondropdown extends StatelessWidget {
+  final String value;
   final List<DropdownMenuItem<String>> items;
   final void Function(String?) onChanged;
   final String labelText;
 
   const Buttondropdown(
       {Key? key,
+      required this.value,
       required this.items,
       required this.onChanged,
       required this.labelText})
@@ -14,7 +17,10 @@ class Buttondropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
+      isDense: true,
+      isExpanded: true,
       items: items,
+      value: value,
       onChanged: onChanged,
       decoration: InputDecoration(
         labelText: labelText,
@@ -26,9 +32,11 @@ class Buttondropdown extends StatelessWidget {
       ),
       borderRadius: BorderRadius.circular(20.0),
       validator: (value) {
-        value ??= '';
-        if (value.isEmpty) {
-          return 'Este campo es obligatorio';
+        if (value == null) {
+          // Mostrar el snackbar
+          Get.snackbar(
+              'Formulario no valido', 'Debes ingresar el sexo de tu mascota');
+          return 'Debes ingresar el sexo de tu mascota';
         }
         return null;
       },

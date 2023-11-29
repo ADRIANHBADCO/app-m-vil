@@ -1,8 +1,10 @@
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:app_veterinaria/src/util/citas/citas_controller.dart';
 
 class InputFecha extends StatefulWidget {
-  const InputFecha({super.key});
+    CitasController controller = Get.put(CitasController());
 
   @override
   State<InputFecha> createState() => _InputFechaState();
@@ -11,9 +13,11 @@ class InputFecha extends StatefulWidget {
 class _InputFechaState extends State<InputFecha> {
   DateTime currentDate = DateTime.now();
   TextEditingController textController = TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
+    CitasController con = Get.find<CitasController>();
+
     Future<void> getCurrent(BuildContext context) async {
       DateTime currentDate = DateTime.now();
       final DateTime? selectedDate = await showDatePicker(
@@ -54,13 +58,6 @@ class _InputFechaState extends State<InputFecha> {
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
         getCurrent(context);
-      },
-      validator: (value) {
-        value ??= '';
-        if (value.isEmpty) {
-          return 'Este campo es obligatorio';
-        }
-        return null;
       },
     );
   }

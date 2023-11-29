@@ -20,7 +20,7 @@ class CategoriasProductos extends StatelessWidget {
           'Categorías',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color(0xFFFB0404),
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

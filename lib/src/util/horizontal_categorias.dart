@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:app_veterinaria/src/util/categorias_detalles.dart';
+import 'package:app_veterinaria/src/unauthenticated/categorias_detalles.dart';
 
 class HorizontalCategorias extends StatefulWidget {
   const HorizontalCategorias({super.key});
@@ -74,10 +74,15 @@ class ServiceWidget extends StatelessWidget {
         child: SizedBox(
           width: 100.0,
           child: ListTile(
-            title: Image.network(
-              category.imagencat,
-              width: 100,
-              height: 80,
+            title: SizedBox(
+              height: 80.0,
+              width: 80.0,
+              child: CircleAvatar(
+                radius: 100.0,
+                backgroundImage: NetworkImage(
+                  category.imagencat,
+                ),
+              ),
             ),
             subtitle: Container(
               alignment: Alignment.topCenter,

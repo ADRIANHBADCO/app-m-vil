@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:app_veterinaria/src/util/carrusel_vt.dart';
 import 'package:app_veterinaria/src/util/search_services.dart';
@@ -5,11 +6,12 @@ import 'package:app_veterinaria/src/util/productos_pages.dart';
 import 'package:app_veterinaria/src/widgets/subtitulo_text.dart';
 import 'package:app_veterinaria/src/util/horizontal_servicios.dart';
 import 'package:app_veterinaria/src/util/horizontal_categorias.dart';
-import 'package:app_veterinaria/src/authenticated/sidebar_menu.dart';
 import 'package:app_veterinaria/src/authenticated/carrito_compras.dart';
+import 'package:app_veterinaria/src/authenticated/home/home_controller.dart';
+import 'package:app_veterinaria/src/authenticated/profile/info/sidebar_menu.dart';
 
 class HomeSignin extends StatefulWidget {
-  const HomeSignin({super.key});
+  HomeController con = Get.put(HomeController());
 
   @override
   State<HomeSignin> createState() => _HomeSigninState();
@@ -24,10 +26,10 @@ class _HomeSigninState extends State<HomeSignin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SidebarMenu(),
+      drawer: SidebarMenu(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color(0xFFFB0404),
         elevation: 0,
         title: InkWell(
           onTap: () {

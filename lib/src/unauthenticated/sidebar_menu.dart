@@ -2,11 +2,11 @@ import '../util/acerca_de.dart';
 import 'package:flutter/material.dart';
 import '../widgets/custom_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:app_veterinaria/src/util/registrar_citas.dart';
 import 'package:app_veterinaria/src/util/search_services.dart';
 import 'package:app_veterinaria/src/util/servicios_pages.dart';
 import 'package:app_veterinaria/src/unauthenticated/mi_cuenta.dart';
 import 'package:app_veterinaria/src/util/categorias_productos.dart';
+import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
 
 class SidebarMenu extends StatelessWidget {
   _launchURL() async {
@@ -59,7 +59,7 @@ class SidebarMenu extends StatelessWidget {
             title: const Text('Agendar cita'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const RegistrarCitas(),
+                builder: (context) => RegistrarCitas(),
               ));
             },
           ),

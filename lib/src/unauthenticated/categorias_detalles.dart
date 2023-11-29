@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/util/registrar_citas.dart';
-import 'package:app_veterinaria/src/util/horizontal_servicios.dart';
+import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
+import 'package:app_veterinaria/src/util/horizontal_categorias.dart';
 
-class ServiciosDetalles extends StatelessWidget {
-  final Service service;
+class CategoriasDetalles extends StatelessWidget {
+  final Category category;
 
-  const ServiciosDetalles({super.key, required this.service});
+  const CategoriasDetalles({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          service.tipo,
+          category.categoria,
           style:
               const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color(0xFFFB0404),
       ),
       body: ListView(
         children: [
           Center(
             child: Image.network(
-              service.imagen,
+              category.imagencat,
               fit: BoxFit.cover,
-              width: 380,
-              height: 250,
+              width: 400,
+              height: 500,
             ),
           ),
           Padding(
@@ -36,19 +36,10 @@ class ServiciosDetalles extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    service.tipo,
+                    category.categoria,
                     style: const TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 25,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    service.descripcion,
-                    style: const TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 16,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -60,7 +51,7 @@ class ServiciosDetalles extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const RegistrarCitas(),
+                          builder: (context) => RegistrarCitas(),
                         ));
                       },
                       style: ElevatedButton.styleFrom(
