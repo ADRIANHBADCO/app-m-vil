@@ -1,20 +1,16 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:app_veterinaria/src/models/user.dart';
 import 'package:app_veterinaria/src/models/product.dart';
 import 'package:app_veterinaria/src/environment/environment.dart';
 
 class ProductsProvider extends GetConnect {
   String url = Environment.API_URL + 'api/productssn';
 
-  User userSession = User.fromJson(GetStorage().read('user') ?? {});
-
   Future<List<Product>> findByCategory(String idCategory) async {
     try {
       Response response =
           await get('$url/findByCategory/$idCategory', headers: {
         'Content-Type': 'application/json',
-        'Authorization': userSession.sessionToken ?? ''
+        //'Authorization': userSession.sessionToken ?? ''
       }); // ESPERAR HASTA QUE EL SERVIDOR NOS RETORNE LA RESPUESTA
 
       if (response.statusCode == 401) {
@@ -42,7 +38,7 @@ class ProductsProvider extends GetConnect {
       Response response =
           await get('$url/findByNameAndCategory/$idCategory/$name', headers: {
         'Content-Type': 'application/json',
-        'Authorization': userSession.sessionToken ?? ''
+        //'Authorization': userSession.sessionToken ?? ''
       }); // ESPERAR HASTA QUE EL SERVIDOR NOS RETORNE LA RESPUESTA
 
       if (response.statusCode == 401) {

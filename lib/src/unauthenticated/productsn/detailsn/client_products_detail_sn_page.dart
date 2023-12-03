@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:app_veterinaria/src/models/product.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 import 'package:app_veterinaria/src/unauthenticated/productsn/detailsn/client_products_detail_sn_controller.dart';
 
 class ClientProductsDetailSnPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class ClientProductsDetailSnPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    con.checkIfProductsWasAdded(product!, price, counter);
+    //con.checkIfProductsWasAdded(product!, price, counter);
     return Obx(() => Scaffold(
           appBar: AppBar(
             title: Text(
@@ -31,14 +32,17 @@ class ClientProductsDetailSnPage extends StatelessWidget {
           bottomNavigationBar: Container(
               color: const Color.fromRGBO(245, 245, 245, 1.0),
               height: 100,
-              child: _buttonsAddToBag()),
+              child: _buttonsAddToBag(context)),
           body: SingleChildScrollView(
             child: Column(
               children: [
                 _imageSlideshow(context),
                 _textNameProduct(),
                 _textDescriptionProduct(),
-                _textPriceProduct()
+                _textPriceProduct(),
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),
@@ -60,7 +64,7 @@ class ClientProductsDetailSnPage extends StatelessWidget {
   Widget _textDescriptionProduct() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 10, left: 30, right: 30),
+      margin: EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Text(
         product?.description ?? '',
         style: TextStyle(
@@ -70,7 +74,7 @@ class ClientProductsDetailSnPage extends StatelessWidget {
     );
   }
 
-  Widget _buttonsAddToBag() {
+  Widget _buttonsAddToBag(BuildContext context) {
     return Column(
       children: [
         Divider(height: 1, color: Colors.grey[400]),
@@ -79,7 +83,7 @@ class ClientProductsDetailSnPage extends StatelessWidget {
           child: Row(
             children: [
               ElevatedButton(
-                onPressed: () => con.removeItem(product!, price, counter),
+                onPressed: () {},
                 child: Text(
                   '-',
                   style: TextStyle(color: Colors.black, fontSize: 22),
@@ -105,7 +109,7 @@ class ClientProductsDetailSnPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => con.addItem(product!, price, counter),
+                onPressed: () {},
                 child: Text(
                   '+',
                   style: TextStyle(color: Colors.black, fontSize: 22),
@@ -121,16 +125,20 @@ class ClientProductsDetailSnPage extends StatelessWidget {
               ),
               Spacer(),
               ElevatedButton(
-                onPressed: () => con.addToBag(product!, price, counter),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => IniciarCuenta(),
+                  ));
+                },
                 child: Text(
                   'Agregar   \$${price.value}',
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.amber,
+                  backgroundColor: const Color(0xFFFB0404),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -160,7 +168,7 @@ class ClientProductsDetailSnPage extends StatelessWidget {
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.5,
         initialPage: 0,
-        indicatorColor: Colors.amber,
+        indicatorColor: const Color(0xFFFB0404),
         indicatorBackgroundColor: Colors.grey,
         children: [
           FadeInImage(

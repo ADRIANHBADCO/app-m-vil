@@ -18,11 +18,11 @@ class CustomDrawer extends StatelessWidget {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: const Color(0xFFFB0404).withOpacity(
-                      0.3), // Aquí ajusta el nivel de transparencia
+                  backgroundColor: const Color(0xFFFB0404).withOpacity(0.4),
+                  // Aquí ajusta el nivel de transparencia
                   child: ClipOval(
                     child: Image.asset(
-                      'images/user.png',
+                      'images/user_profile.png',
                       width: 90,
                       height: 90,
                       fit: BoxFit.cover,

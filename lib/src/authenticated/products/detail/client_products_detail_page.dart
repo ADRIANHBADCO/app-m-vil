@@ -38,7 +38,10 @@ class ClientProductsDetailPage extends StatelessWidget {
                 _imageSlideshow(context),
                 _textNameProduct(),
                 _textDescriptionProduct(),
-                _textPriceProduct()
+                _textPriceProduct(),
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),
@@ -60,7 +63,7 @@ class ClientProductsDetailPage extends StatelessWidget {
   Widget _textDescriptionProduct() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 10, left: 30, right: 30),
+      margin: EdgeInsets.only(top: 20, left: 30, right: 30),
       child: Text(
         product?.description ?? '',
         style: TextStyle(
@@ -125,12 +128,12 @@ class ClientProductsDetailPage extends StatelessWidget {
                 child: Text(
                   'Agregar   \$${price.value}',
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.amber,
+                  backgroundColor: const Color(0xFFFB0404),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -146,7 +149,7 @@ class ClientProductsDetailPage extends StatelessWidget {
   Widget _textPriceProduct() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 15, left: 30, right: 30),
+      margin: EdgeInsets.only(top: 10, left: 30, right: 30),
       child: Text(
         '\$${product?.price.toString() ?? ''}',
         style: TextStyle(
@@ -160,7 +163,7 @@ class ClientProductsDetailPage extends StatelessWidget {
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.5,
         initialPage: 0,
-        indicatorColor: Colors.amber,
+        indicatorColor: const Color(0xFFFB0404),
         indicatorBackgroundColor: Colors.grey,
         children: [
           FadeInImage(

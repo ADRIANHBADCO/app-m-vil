@@ -23,8 +23,6 @@ class LoginController extends GetxController {
     print('Email ${email}');
     print('Password ${password}');
 
-    
-
     if (isValidForm(email, password)) {
       ProgressDialog progressDialog = ProgressDialog(context: context);
       progressDialog.show(max: 100, msg: 'Logueando...');

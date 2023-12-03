@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:app_veterinaria/src/models/user.dart';
 import 'package:app_veterinaria/src/models/product.dart';
 import 'package:app_veterinaria/src/models/category.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -11,7 +9,6 @@ import 'package:app_veterinaria/src/provider/categories_sn_provider.dart';
 import 'package:app_veterinaria/src/unauthenticated/productsn/detailsn/client_products_detail_sn_page.dart';
 
 class ClientProductsListSnController extends GetxController {
-  User user = User.fromJson(GetStorage().read('user') ?? {});
   CategoriesProvider categoriesProvider = CategoriesProvider();
   ProductsProvider productsProvider = ProductsProvider();
 
@@ -25,25 +22,6 @@ class ClientProductsListSnController extends GetxController {
 
   ClientProductsListSnController() {
     getCategories();
-    if (GetStorage().read('shopping_bag') != null) {
-      if (GetStorage().read('shopping_bag') is List<Product>) {
-        selectedProducts = GetStorage().read('shopping_bag');
-      } else {
-        selectedProducts =
-            Product.fromJsonList(GetStorage().read('shopping_bag'));
-      }
-
-      selectedProducts.forEach((p) {
-        items.value = items.value + (p.quantity!);
-      });
-    }
-    print('USUARIO DE SESION: ${user.toJson()}');
-  }
-
-  void signOut() {
-    GetStorage().remove('user');
-
-    Get.offNamedUntil('/', (route) => false);
   }
 
   void onChangeText(String text) {

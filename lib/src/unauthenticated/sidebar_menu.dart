@@ -66,15 +66,6 @@ class SidebarMenu extends StatelessWidget {
               ));
             },
           ),*/
-          ListTile(
-            leading: const Icon(Icons.format_list_bulleted_outlined),
-            title: const Text('Categorias'),
-            onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => RegistrarCuenta(),
-              ));
-            },
-          ),
           const Divider(
             height: 20.0,
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 //import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 
 class MiCuenta extends StatelessWidget {
@@ -40,20 +41,13 @@ class UserActions extends StatelessWidget {
       children: <Widget>[
         InkWell(
           onTap: () {
-            _navigateToIniciarCuenta(context);
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => IniciarCuenta(),
+            ));
           },
           child: const ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('Mi perfil'),
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            _navigateToIniciarCuenta(context);
-          },
-          child: const ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Ingresar a cahorro PET'),
           ),
         ),
       ],

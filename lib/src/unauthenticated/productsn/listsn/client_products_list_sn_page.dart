@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:app_veterinaria/src/models/product.dart';
 import 'package:app_veterinaria/src/models/category.dart';
 import 'package:app_veterinaria/src/widgets/no_data_widget.dart';
-import 'package:app_veterinaria/src/authenticated/profile/info/sidebar_menu.dart';
+import 'package:app_veterinaria/src/unauthenticated/sidebar_menu.dart';
 import 'package:app_veterinaria/src/unauthenticated/productsn/listsn/client_products_list_sn_controller.dart';
 
 class ClientProductsListSnPage extends StatelessWidget {

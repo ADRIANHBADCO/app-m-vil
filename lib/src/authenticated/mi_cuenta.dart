@@ -50,7 +50,8 @@ class UserActions extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            ClientProductsListController con = Get.find<ClientProductsListController>();
+            ClientProductsListController con =
+                Get.find<ClientProductsListController>();
             con.signOut();
           },
           child: const ListTile(

@@ -2,23 +2,22 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:app_veterinaria/src/models/category.dart';
-import 'package:app_veterinaria/src/authenticated/profile/info/products/create/pet_products_ccontroller.dart';
+import 'package:app_veterinaria/src/authenticated/profile/info/products/create/restaurant_products_create_controller.dart';
 
-class PetProducts extends StatelessWidget {
-  PetProductsController con = Get.put(PetProductsController());
+class RestaurantProductsCreatePage extends StatelessWidget {
+  RestaurantProductsCreateController con =
+      Get.put(RestaurantProductsCreateController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => SingleChildScrollView(
-            child: Stack(
-              // POSICIONAR ELEMENTOS UNO ENCIMA DEL OTRO
-              children: [
-                _backgroundCover(context),
-                _boxForm(context),
-                _textNewCategory(context),
-              ],
-            ),
+      body: Obx(() => Stack(
+            // POSICIONAR ELEMENTOS UNO ENCIMA DEL OTRO
+            children: [
+              _backgroundCover(context),
+              _boxForm(context),
+              _textNewCategory(context),
+            ],
           )),
     );
   }
@@ -49,36 +48,18 @@ class PetProducts extends StatelessWidget {
             _textFieldPrice(),
             _dropDownCategories(con.categories),
             Container(
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GetBuilder<PetProductsController>(
-                          builder: (value) =>
-                              _cardImage(context, con.imageFile1, 1)),
-                      GetBuilder<PetProductsController>(
-                          builder: (value) =>
-                              _cardImage(context, con.imageFile2, 2)),
-                      GetBuilder<PetProductsController>(
-                          builder: (value) =>
-                              _cardImage(context, con.imageFile3, 3)),
-                    ],
-                  ),
-                  /* Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GetBuilder<PetProductsController>(
-                          builder: (value) =>
-                              _cardImage(context, con.imageFile4, 4)),
-                      GetBuilder<PetProductsController>(
-                          builder: (value) =>
-                              _cardImage(context, con.imageFile5, 5)),
-                      GetBuilder<PetProductsController>(
-                          builder: (value) =>
-                              _cardImage(context, con.imageFile6, 6)),
-                    ],
-                  ),*/
+                  GetBuilder<RestaurantProductsCreateController>(
+                      builder: (value) =>
+                          _cardImage(context, con.imageFile1, 1)),
+                  GetBuilder<RestaurantProductsCreateController>(
+                      builder: (value) =>
+                          _cardImage(context, con.imageFile2, 2)),
+                  GetBuilder<RestaurantProductsCreateController>(
+                      builder: (value) =>
+                          _cardImage(context, con.imageFile3, 3)),
                 ],
               ),
             ),

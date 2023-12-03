@@ -55,11 +55,17 @@ class ClientOrdersCreatePage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {},
                     //=> con.goToAddressList(),
-                    style:
-                        ElevatedButton.styleFrom(padding: EdgeInsets.all(15)),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(15),
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
                     child: Text(
-                      'CONFIRMAR ORDER',
-                      style: TextStyle(color: Colors.black),
+                      'CONFIRMAR COMPRA',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     )),
               )
             ],

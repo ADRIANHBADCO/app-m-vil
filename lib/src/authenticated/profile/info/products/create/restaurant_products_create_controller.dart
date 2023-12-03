@@ -10,7 +10,7 @@ import 'package:app_veterinaria/src/models/response_api.dart';
 import 'package:app_veterinaria/src/provider/products_provider.dart';
 import 'package:app_veterinaria/src/provider/categories_provider.dart';
 
-class PetProductsController extends GetxController {
+class RestaurantProductsCreateController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -20,15 +20,12 @@ class PetProductsController extends GetxController {
   File? imageFile1;
   File? imageFile2;
   File? imageFile3;
-  /*File? imageFile4;
-  File? imageFile5;
-  File? imageFile6;*/
 
   var idCategory = ''.obs;
   List<Category> categories = <Category>[].obs;
   ProductsProvider productsProvider = ProductsProvider();
 
-  PetProductsController() {
+  RestaurantProductsCreateController() {
     getCategories();
   }
 
@@ -66,9 +63,6 @@ class PetProductsController extends GetxController {
       images.add(imageFile1!);
       images.add(imageFile2!);
       images.add(imageFile3!);
-      /*images.add(imageFile4!);
-      images.add(imageFile5!);
-      images.add(imageFile6!);*/
 
       Stream stream = await productsProvider.create(product, images);
       stream.listen((res) {
@@ -119,22 +113,6 @@ class PetProductsController extends GetxController {
       return false;
     }
 
-    /*if (imageFile4 == null) {
-      Get.snackbar(
-          'Fomulario no valido', 'Selecciona la imagen numero 4 del producto');
-      return false;
-    }
-    if (imageFile5 == null) {
-      Get.snackbar(
-          'Fomulario no valido', 'Selecciona la imagen numero 5 del producto');
-      return false;
-    }
-    if (imageFile6 == null) {
-      Get.snackbar(
-          'Fomulario no valido', 'Selecciona la imagen numero 6 del producto');
-      return false;
-    }*/
-
     return true;
   }
 
@@ -147,13 +125,7 @@ class PetProductsController extends GetxController {
         imageFile2 = File(image.path);
       } else if (numberFile == 3) {
         imageFile3 = File(image.path);
-      } /* else if (numberFile == 4) {
-        imageFile4 = File(image.path);
-      } else if (numberFile == 5) {
-        imageFile5 = File(image.path);
-      } else if (numberFile == 6) {
-        imageFile6 = File(image.path);
-      }*/
+      }
 
       update();
     }
@@ -198,9 +170,6 @@ class PetProductsController extends GetxController {
     imageFile1 = null;
     imageFile2 = null;
     imageFile3 = null;
-    /*imageFile4 = null;
-    imageFile5 = null;
-    imageFile6 = null;*/
     idCategory.value = '';
     update();
   }
