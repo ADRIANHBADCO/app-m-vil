@@ -1,20 +1,14 @@
-import '../util/acerca_de.dart';
 import 'package:flutter/material.dart';
 import '../widgets/custom_drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:app_veterinaria/src/util/search_services.dart';
-import 'package:app_veterinaria/src/util/servicios_pages.dart';
+import 'package:app_veterinaria/src/util/acerca_de.dart';
 import 'package:app_veterinaria/src/unauthenticated/mi_cuenta.dart';
-import 'package:app_veterinaria/src/util/categorias_productos.dart';
-import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
+import 'package:app_veterinaria/src/unauthenticated/registro/registrar_cuenta.dart';
+//import 'package:app_veterinaria/src/unauthenticated/product/lista/products_list.dart';
+//import 'package:app_veterinaria/src/util/search_services.dart';
+//import 'package:app_veterinaria/src/util/servicios_pages.dart';
+//import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
 
 class SidebarMenu extends StatelessWidget {
-  _launchURL() async {
-    const url =
-        'https://proyectowebuni.com/archivos/Aviso%20de%20privacidad.pdf';
-    await launch(url, forceSafariVC: false, forceWebView: false);
-  }
-
   const SidebarMenu({super.key});
 
   @override
@@ -38,13 +32,13 @@ class SidebarMenu extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          ListTile(
+          /*ListTile(
             leading: const Icon(Icons.search),
             title: const Text('Buscar'),
             onTap: () {
               showSearch(context: context, delegate: SearchServices());
             },
-          ),
+          ),*/
           ListTile(
             leading: const Icon(Icons.account_circle_outlined),
             title: const Text('Mi cuenta'),
@@ -54,7 +48,7 @@ class SidebarMenu extends StatelessWidget {
               ));
             },
           ),
-          ListTile(
+          /*ListTile(
             leading: const Icon(Icons.date_range_outlined),
             title: const Text('Agendar cita'),
             onTap: () {
@@ -62,8 +56,8 @@ class SidebarMenu extends StatelessWidget {
                 builder: (context) => RegistrarCitas(),
               ));
             },
-          ),
-          ListTile(
+          ),*/
+          /*ListTile(
             leading: const Icon(Icons.health_and_safety_outlined),
             title: const Text('Servicios'),
             onTap: () {
@@ -71,28 +65,15 @@ class SidebarMenu extends StatelessWidget {
                 builder: (context) => const ServiciosPage(),
               ));
             },
-          ),
+          ),*/
           ListTile(
             leading: const Icon(Icons.format_list_bulleted_outlined),
             title: const Text('Categorias'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => CategoriasProductos(),
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => RegistrarCuenta(),
               ));
             },
-          ),
-          const Divider(
-            height: 20.0,
-          ),
-          //ListTile(
-          //leading: const Icon(Icons.question_answer_outlined),
-          //title: const Text('Preguntas frecuentes'),
-          //onTap: () {},
-          //),
-          ListTile(
-            leading: const Icon(Icons.privacy_tip_outlined),
-            title: const Text('Aviso de privacidad'),
-            onTap: _launchURL,
           ),
           const Divider(
             height: 20.0,
@@ -105,6 +86,11 @@ class SidebarMenu extends StatelessWidget {
               ));
             },
           ),
+          //ListTile(
+          //leading: const Icon(Icons.question_answer_outlined),
+          //title: const Text('Preguntas frecuentes'),
+          //onTap: () {},
+          //),
         ],
       ),
     );

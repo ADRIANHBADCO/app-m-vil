@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 import 'package:app_veterinaria/src/unauthenticated/registro/registrar_cuenta.dart';
 
 class CardSesiones extends StatelessWidget {
@@ -49,11 +48,7 @@ class CardSesiones extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => IniciarCuenta(),
-                    ));
-                  },
+                  onPressed: () {},
                   style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),

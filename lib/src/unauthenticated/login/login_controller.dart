@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:sn_progress_dialog/progress_dialog.dart';
 import 'package:app_veterinaria/src/models/response_api.dart';
 import 'package:app_veterinaria/src/provider/user_provider.dart';
 
@@ -15,14 +16,18 @@ class LoginController extends GetxController {
     Get.toNamed('/register');
   }
 
-  void login() async {
+  void login(BuildContext context) async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
 
     print('Email ${email}');
     print('Password ${password}');
 
+    
+
     if (isValidForm(email, password)) {
+      ProgressDialog progressDialog = ProgressDialog(context: context);
+      progressDialog.show(max: 100, msg: 'Logueando...');
       ResponseApi responseApi = await userProvider.login(email, password);
 
       print('Response Api: ${responseApi.toJson()}');

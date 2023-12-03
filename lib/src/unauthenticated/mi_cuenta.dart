@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
+//import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 
 class MiCuenta extends StatelessWidget {
   const MiCuenta({super.key});
@@ -31,11 +31,7 @@ class UserActions extends StatelessWidget {
   const UserActions({super.key});
 
   // Función para navegar a la pantalla "IniciarCuenta"
-  void _navigateToIniciarCuenta(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => IniciarCuenta(),
-    ));
-  }
+  void _navigateToIniciarCuenta(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {

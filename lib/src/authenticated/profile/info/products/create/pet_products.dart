@@ -10,13 +10,15 @@ class PetProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => Stack(
-            // POSICIONAR ELEMENTOS UNO ENCIMA DEL OTRO
-            children: [
-              _backgroundCover(context),
-              _boxForm(context),
-              _textNewCategory(context),
-            ],
+      body: Obx(() => SingleChildScrollView(
+            child: Stack(
+              // POSICIONAR ELEMENTOS UNO ENCIMA DEL OTRO
+              children: [
+                _backgroundCover(context),
+                _boxForm(context),
+                _textNewCategory(context),
+              ],
+            ),
           )),
     );
   }
@@ -63,7 +65,7 @@ class PetProducts extends StatelessWidget {
                               _cardImage(context, con.imageFile3, 3)),
                     ],
                   ),
-                  Row(
+                  /* Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GetBuilder<PetProductsController>(
@@ -76,7 +78,7 @@ class PetProducts extends StatelessWidget {
                           builder: (value) =>
                               _cardImage(context, con.imageFile6, 6)),
                     ],
-                  ),
+                  ),*/
                 ],
               ),
             ),

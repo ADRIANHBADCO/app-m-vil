@@ -20,9 +20,9 @@ class PetProductsController extends GetxController {
   File? imageFile1;
   File? imageFile2;
   File? imageFile3;
-  File? imageFile4;
+  /*File? imageFile4;
   File? imageFile5;
-  File? imageFile6;
+  File? imageFile6;*/
 
   var idCategory = ''.obs;
   List<Category> categories = <Category>[].obs;
@@ -48,10 +48,16 @@ class PetProductsController extends GetxController {
     print('ID CATEGORY: ${idCategory}');
     ProgressDialog progressDialog = ProgressDialog(context: context);
 
+    String nameCapitalizado = name[0].toUpperCase() + name.substring(1);
+    name = nameCapitalizado;
+    String descriptionCapitalizado =
+        description[0].toUpperCase() + description.substring(1);
+    description = descriptionCapitalizado;
+
     if (isValidForm(name, description, price)) {
       Product product = Product(
-          name: name,
-          description: description,
+          name: nameCapitalizado,
+          description: descriptionCapitalizado,
           price: double.parse(price),
           idCategory: idCategory.value);
       progressDialog.show(max: 100, msg: 'Espere un momento...');
@@ -60,9 +66,9 @@ class PetProductsController extends GetxController {
       images.add(imageFile1!);
       images.add(imageFile2!);
       images.add(imageFile3!);
-      images.add(imageFile4!);
+      /*images.add(imageFile4!);
       images.add(imageFile5!);
-      images.add(imageFile6!);
+      images.add(imageFile6!);*/
 
       Stream stream = await productsProvider.create(product, images);
       stream.listen((res) {
@@ -113,7 +119,7 @@ class PetProductsController extends GetxController {
       return false;
     }
 
-    if (imageFile4 == null) {
+    /*if (imageFile4 == null) {
       Get.snackbar(
           'Fomulario no valido', 'Selecciona la imagen numero 4 del producto');
       return false;
@@ -127,7 +133,7 @@ class PetProductsController extends GetxController {
       Get.snackbar(
           'Fomulario no valido', 'Selecciona la imagen numero 6 del producto');
       return false;
-    }
+    }*/
 
     return true;
   }
@@ -141,13 +147,13 @@ class PetProductsController extends GetxController {
         imageFile2 = File(image.path);
       } else if (numberFile == 3) {
         imageFile3 = File(image.path);
-      } else if (numberFile == 4) {
+      } /* else if (numberFile == 4) {
         imageFile4 = File(image.path);
       } else if (numberFile == 5) {
         imageFile5 = File(image.path);
       } else if (numberFile == 6) {
         imageFile6 = File(image.path);
-      }
+      }*/
 
       update();
     }
@@ -192,9 +198,9 @@ class PetProductsController extends GetxController {
     imageFile1 = null;
     imageFile2 = null;
     imageFile3 = null;
-    imageFile4 = null;
+    /*imageFile4 = null;
     imageFile5 = null;
-    imageFile6 = null;
+    imageFile6 = null;*/
     idCategory.value = '';
     update();
   }

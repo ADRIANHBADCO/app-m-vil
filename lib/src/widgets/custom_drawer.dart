@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
+//import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -64,11 +64,7 @@ class CustomDrawer extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0,
                 16.0), // Ajusta la cantidad de espacio alrededor del botón
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => IniciarCuenta(),
-                ));
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.lightBlue,
                   shape: RoundedRectangleBorder(

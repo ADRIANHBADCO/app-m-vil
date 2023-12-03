@@ -11,9 +11,6 @@ class Product {
   String? image1;
   String? image2;
   String? image3;
-  String? image4;
-  String? image5;
-  String? image6;
   String? idCategory;
   double? price;
   int? quantity;
@@ -25,9 +22,6 @@ class Product {
     this.image1,
     this.image2,
     this.image3,
-    this.image4,
-    this.image5,
-    this.image6,
     this.idCategory,
     this.price,
     this.quantity,
@@ -40,9 +34,6 @@ class Product {
         image1: json["image1"],
         image2: json["image2"],
         image3: json["image3"],
-        image4: json["image4"],
-        image5: json["image5"],
-        image6: json["image6"],
         idCategory: json["id_category"],
         price: json["price"].toDouble(),
         quantity: json["quantity"],
@@ -66,9 +57,6 @@ class Product {
         "image1": image1,
         "image2": image2,
         "image3": image3,
-        "image4": image4,
-        "image5": image5,
-        "image6": image6,
         "id_category": idCategory,
         "price": price,
         "quantity": quantity,

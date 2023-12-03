@@ -1,23 +1,16 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:app_veterinaria/src/util/acerca_de.dart';
-import 'package:app_veterinaria/src/util/servicios_pages.dart';
-import 'package:app_veterinaria/src/util/search_services.dart';
 import 'package:app_veterinaria/src/authenticated/mi_cuenta.dart';
-import 'package:app_veterinaria/src/util/categorias_productos.dart';
-import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
 import 'package:app_veterinaria/src/authenticated/profile/info/perfil_usuario_controller.dart';
 import 'package:app_veterinaria/src/authenticated/profile/info/products/create/pet_products.dart';
-import 'package:app_veterinaria/src/authenticated/profile/info/categories/create/pet_categories.dart';
+//import 'package:app_veterinaria/src/util/search_services.dart';
+//import 'package:app_veterinaria/src/authenticated/profile/info/categories/create/pet_categories.dart';
+//import 'package:app_veterinaria/src/util/servicios_pages.dart';
+//import 'package:app_veterinaria/src/util/citas/registrar_citas.dart';
+//import 'package:app_veterinaria/src/util/categorias_productos.dart';
 
 class SidebarMenu extends StatelessWidget {
-  _launchURL() async {
-    const url =
-        'https://proyectowebuni.com/archivos/Aviso%20de%20privacidad.pdf';
-    await launch(url, forceSafariVC: false, forceWebView: false);
-  }
-
   PerfilUsuarioController controller = Get.put(PerfilUsuarioController());
   PerfilUsuarioController con = Get.find<PerfilUsuarioController>();
 
@@ -70,13 +63,13 @@ class SidebarMenu extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          ListTile(
+          /*ListTile(
             leading: const Icon(Icons.search),
             title: const Text('Buscar'),
             onTap: () {
               showSearch(context: context, delegate: SearchServices());
             },
-          ),
+          ),*/
           ListTile(
             leading: const Icon(Icons.account_circle_outlined),
             title: const Text('Mi cuenta'),
@@ -86,7 +79,7 @@ class SidebarMenu extends StatelessWidget {
               ));
             },
           ),
-          ListTile(
+          /*ListTile(
             leading: const Icon(Icons.category),
             title: const Text('Register categoria'),
             onTap: () {
@@ -94,7 +87,7 @@ class SidebarMenu extends StatelessWidget {
                 builder: (context) => PetCategories(),
               ));
             },
-          ),
+          ),*/
           ListTile(
             leading: const Icon(Icons.category),
             title: const Text('Register producto'),
@@ -104,7 +97,7 @@ class SidebarMenu extends StatelessWidget {
               ));
             },
           ),
-          ListTile(
+          /*ListTile(
             leading: const Icon(Icons.date_range_outlined),
             title: const Text('Agendar cita'),
             onTap: () {
@@ -112,8 +105,8 @@ class SidebarMenu extends StatelessWidget {
                 builder: (context) => RegistrarCitas(),
               ));
             },
-          ),
-          ListTile(
+          ),*/
+          /*ListTile(
             leading: const Icon(Icons.health_and_safety_outlined),
             title: const Text('Servicios'),
             onTap: () {
@@ -121,16 +114,7 @@ class SidebarMenu extends StatelessWidget {
                 builder: (context) => const ServiciosPage(),
               ));
             },
-          ),
-          ListTile(
-            leading: const Icon(Icons.format_list_bulleted_outlined),
-            title: const Text('Categorias'),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => CategoriasProductos(),
-              ));
-            },
-          ),
+          ),*/
           const Divider(
             height: 20.0,
           ),
@@ -139,14 +123,6 @@ class SidebarMenu extends StatelessWidget {
           //title: const Text('Preguntas frecuentes'),
           //onTap: () {},
           //),
-          ListTile(
-            leading: const Icon(Icons.privacy_tip_outlined),
-            title: const Text('Aviso de privacidad'),
-            onTap: _launchURL,
-          ),
-          const Divider(
-            height: 20.0,
-          ),
           ListTile(
             title: const Text('Acerca de cachorro PET'),
             onTap: () {

@@ -1,16 +1,16 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:app_veterinaria/src/unauthenticated/home_signup.dart';
-import 'package:app_veterinaria/src/authenticated/home/home_controller.dart';
 import 'package:app_veterinaria/src/authenticated/profile/info/perfil_usuario.dart';
+import 'package:app_veterinaria/src/authenticated/products/list/client_products_list_controller.dart';
 
 class MiCuenta extends StatelessWidget {
-  HomeController con = Get.put(HomeController());
+  ClientProductsListController con = Get.put(ClientProductsListController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Mi cuenta',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -50,7 +50,7 @@ class UserActions extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            HomeController con = Get.find<HomeController>();
+            ClientProductsListController con = Get.find<ClientProductsListController>();
             con.signOut();
           },
           child: const ListTile(

@@ -9,6 +9,7 @@ class ProfilUsuario extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Mi perfil',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

@@ -106,7 +106,7 @@ Widget _boxForm(BuildContext context) {
                   Buttonelevated(
                     onPressed: () {
                       LoginController con = Get.find<LoginController>();
-                      con.login();
+                      con.login(context);
                     },
                     text: 'Iniciar sesión',
                   ),

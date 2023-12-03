@@ -2,9 +2,11 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:app_veterinaria/src/models/user.dart';
-import 'package:app_veterinaria/src/unauthenticated/home_signup.dart';
-import 'package:app_veterinaria/src/authenticated/home/home_signin.dart';
+import 'package:app_veterinaria/src/unauthenticated/login/iniciar_cuenta.dart';
 import 'package:app_veterinaria/src/unauthenticated/registro/registrar_cuenta.dart';
+import 'package:app_veterinaria/src/authenticated/orders/create/client_orders_create_page.dart';
+import 'package:app_veterinaria/src/authenticated/products/list/client_products_list_page.dart';
+import 'package:app_veterinaria/src/unauthenticated/productsn/listsn/client_products_list_sn_page.dart';
 
 User userSession = User.fromJson(GetStorage().read('user') ?? {});
 
@@ -33,9 +35,14 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: userSession.idusuario != null ? '/homesignin' : '/',
       getPages: [
-        GetPage(name: '/', page: () => const HomeSignup()),
+        GetPage(name: '/', page: () =>  ClientProductsListSnPage()),
         GetPage(name: '/register', page: () => RegistrarCuenta()),
-        GetPage(name: '/homesignin', page: () => HomeSignin()),
+        GetPage(name: '/homesignin', page: () => ClientProductsListPage()),
+        GetPage(
+            name: '/client/orders/create',
+            page: () => ClientOrdersCreatePage()),
+        GetPage(
+            name: '/client/loguin/users', page: () => IniciarCuenta()),
       ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
